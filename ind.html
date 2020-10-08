@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="https://smtpjs.com/v3/smtp.js">
+  </script>
+  <style media="screen">
+    .checker {
+      position: absolute;
+      right: 10%;
+      top: 10%;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width:950px) {
+      .checker {
+        display: flex;
+        top: 77%;
+        right: 3%;
+        margin: 25px;
+        font-size: 1rem;
+        margin: 1rem;
+      }
+    }
+
+
+    input[type='checkbox'] {
+      height: 0;
+      width: 0;
+    }
+
+    input[type='checkbox']+label {
+      position: relative;
+      display: flex;
+      margin: 0.6rem;
+      align-items: center;
+      color: #9e9e9e;
+      transition: color 250ms cubic-bezier(.4, .0, .23, 1);
+    }
+
+    input[type='checkbox']+label>ins {
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 2em;
+      height: 0;
+      width: 100%;
+      overflow: hidden;
+      text-decoration: none;
+      transition: height 300ms cubic-bezier(.4, .0, .23, 1);
+    }
+
+    input[type='checkbox']+label>ins>i {
+      position: absolute;
+      bottom: 0;
+      font-style: normal;
+      color: #4FC3F7;
+    }
+
+    input[type='checkbox']+label>span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1em;
+      width: 1em;
+      height: 1em;
+      background: transparent;
+      border: 2px solid #9E9E9E;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 250ms cubic-bezier(.4, .0, .23, 1);
+    }
+
+    input[type='checkbox']+label:hover,
+    input[type='checkbox']:focus+label {
+      color: #fff;
+    }
+
+    input[type='checkbox']+label:hover>span,
+    input[type='checkbox']:focus+label>span {
+      background: rgba(255, 255, 255, .1);
+    }
+
+    input[type='checkbox']:checked+label>ins {
+      height: 100%;
+    }
+
+    input[type='checkbox']:checked+label>span {
+      border: .5em solid #FFEB3B;
+      animation: shrink-bounce 200ms cubic-bezier(.4, .0, .23, 1);
+    }
+
+    input[type='checkbox']:checked+label>span:before {
+      content: "";
+      position: absolute;
+      top: .6em;
+      left: .2em;
+      border-right: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      transform: rotate(45deg);
+      transform-origin: 0% 100%;
+      animation: checkbox-check 125ms 250ms cubic-bezier(.4, .0, .23, 1) forwards;
+    }
+
+    @keyframes shrink-bounce {
+      0% {
+        transform: scale(1);
+      }
+
+      33% {
+        transform: scale(.85);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes checkbox-check {
+      0% {
+        width: 0;
+        height: 0;
+        border-color: #212121;
+        transform: translate3d(0, 0, 0) rotate(45deg);
+      }
+
+      33% {
+        width: .2em;
+        height: 0;
+        transform: translate3d(0, 0, 0) rotate(45deg);
+      }
+
+      100% {
+        width: .2em;
+        height: .5em;
+        border-color: #212121;
+        transform: translate3d(0, -.5em, 0) rotate(45deg);
+      }
+    }
+
+    .area{
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+    }
+
+    .load {
+      display: inline-block;
+      z-index: 1;
+      position: absolute;
+    }
+
+    .loader-19 {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      display: inline-block;
+      border-top: 4px solid #FFF;
+      border-right: 4px solid transparent;
+      animation: rotation 1s linear infinite;
+    }
+
+    .loader-19:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border-left: 4px solid #FF3D00;
+      border-bottom: 4px solid transparent;
+      animation: rotation 0.5s linear infinite reverse;
+    }
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .sp-container {
+      height:120rem;
+      width:100%;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    h2 {
+      top: 30%;
+      left: 30%;
+      position: absolute;
+      height: 400px;
+      font-size: 90px;
+      width: 400px;
+      text-align: center;
+      color: transparent;
+      animation: blurFadeInOut 3s ease-in backwards;
+    }
+
+    h2.frame-1 {
+      animation-delay: 0.5s;
+    }
+
+    h2.frame-2 {
+      animation-delay: 3.5s;
+    }
+
+    @-webkit-keyframes blurFadeInOut {
+      0% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        -webkit-transform: scale(2.1);
+      }
+
+      20%,
+      75% {
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        -webkit-transform: scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        text-shadow: 0px 0px 50px #fff;
+        -webkit-transform: scale(0);
+      }
+    }
+
+    @-webkit-keyframes blurFadeIn {
+      0% {
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        -webkit-transform: scale(1.5);
+      }
+
+      50% {
+        opacity: 0.5;
+        text-shadow: 0px 0px 10px #fff;
+        -webkit-transform: scale(1.1);
+      }
+
+      100% {
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        -webkit-transform: scale(1);
+      }
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 900px;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1483101974978-cf266fdf1139?ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80');
+      background-repeat: no-repeat;
+      background-size: cover;
+
+    }
+
+    .container .clip {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-size: auto;
+      transition: all 1.5s ease;
+      background-position: center;
+    }
+
+    .container .clip1 {
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+      background-image: url('https://images.unsplash.com/photo-1529787184525-7d3933bec5a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80');
+      filter: brightness(70%);
+      background-position: center;
+      background-size: cover;
+    }
+
+    .container .clip2 {
+      background-size: auto;
+      background-image: url('https://images.unsplash.com/photo-1483101974978-cf266fdf1139?ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80');
+      clip-path: polygon(50% 0%, 100% 0, 50% 100%, 0 100%);
+    }
+
+    .container .clip3 {
+      background-size: contain;
+      background-image: url('https://images.unsplash.com/photo-1557173656-a7d48648d88a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=699&q=80');
+      filter: brightness(70%);
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+
+    .container:hover .clip {
+      background-size: cover;
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+
+    .container .text:hover .clip .clip2 {
+      filter: brightness(50%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .container .clip:hover {
+      background-size: cover;
+      filter: brightness(50%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+
+
+    .text {
+      color: white;
+      z-index: 8;
+      position: absolute;
+      display: inline;
+      top: 25%;
+      left: 40%;
+      transition: all 1s linear;
+    }
+
+    .container:hover .text {
+      top: 20%;
+      left: 35%;
+    }
+
+    .main {
+      width: 90%;
+      margin: 5%;
+      display: flex;
+      position: relative;
+      justify-content: center;
+    }
+
+    .content {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1527261834078-9b37d35a4a32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      background-position: center;
+      width: 100%;
+      height: 1200px;
+      box-shadow: 0px 1px 33px black, 0px 15px 42px black;
+    }
+
+    .paper {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80');
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      background-position: center;
+      position: absolute;
+      left: 9%;
+      top: 20%;
+      width: 300px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transition: all 1s linear;
+    }
+
+
+    .ptext {
+      position: absolute;
+      width: 100%;
+      height: 100% display:flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 1s linear;
+    }
+
+    .ppic {
+      position: absolute;
+      display: none;
+      transition: all 1s linear;
+      cursor: pointer;
+    }
+
+    .paper:hover .ppic {
+      display: inline-block;
+    }
+
+    .paper:hover {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    }
+
+    .pinfo {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .quiz {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('qu.jfif');
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      background-position: center;
+      position: absolute;
+      left: 60%;
+      top: 20%;
+      width: 300px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transition: all 1s linear;
+    }
+
+    .qtext {
+      position: absolute;
+      width: 100%;
+      height: 100% display:flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 1s linear;
+    }
+
+    .qpic {
+      position: absolute;
+      display: none;
+      transition: all 1s linear;
+      cursor: pointer;
+    }
+
+    .quiz:hover .qpic {
+      display: inline-block;
+    }
+
+    .quiz:hover {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    }
+
+    .qinfo {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .poto {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80');
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      background-position: center;
+      position: absolute;
+      left: 35%;
+      top: 65%;
+      width: 300px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transition: all 1s linear;
+    }
+
+    .otext {
+      position: absolute;
+      width: 100%;
+      height: 100% display:flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 1s linear;
+    }
+
+    .opic {
+      position: absolute;
+      display: none;
+      transition: all 1s linear;
+      cursor: pointer;
+    }
+
+    .poto:hover .opic {
+      display: inline-block;
+    }
+
+    .poto:hover {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    }
+
+    .oinfo {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    p {
+      color: white;
+    }
+
+    .title {
+      color: white;
+      font-size: 3rem;
+      padding: 25px;
+      border: 0.8rem dashed;
+      margin: 3% 25%;
+      display: inline-block;
+    }
+
+    p {
+      line-height: 1.6;
+      position: relative;
+      left: 25%;
+      display: inline
+    }
+
+    @media (max-width:700px) {
+      .title {
+        font-size: 25px;
+      }
+    }
+
+    .sub {
+      color: #00bcd4;
+      margin: 2%;
+      position: absolute;
+      margin-left: 20%;
+      display: inline;
+    }
+
+    @media (max-width:1000px) {
+      .paper {
+        left: 8%;
+      }
+
+      .quiz {
+        left: 55%;
+      }
+
+      .poto {
+        top: 60%;
+      }
+    }
+
+    @media (max-width:800px) {
+      p {
+        left: 5%;
+      }
+
+      .sub {
+        margin: 7%;
+        margin-left: 10%;
+      }
+
+      .paper {
+        left: 25%;
+      }
+
+      .quiz {
+        left: 25%;
+        top: 45%;
+      }
+
+      .poto {
+        left: 25%;
+        top: 70%;
+      }
+
+      .content {
+        height: 1700px;
+      }
+    }
+
+    @media (max-width:600px) {
+      .paper {
+        left: 15%;
+      }
+
+      .quiz {
+        left: 15%;
+        top: 45%;
+      }
+
+      .poto {
+        left: 15%;
+        top: 70%;
+      }
+    }
+
+
+    .register {
+      position: relative;
+      width: 90%;
+      margin: 5%;
+      box-sizing: border-box;
+      height:50rem;
+      overflow: hidden;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1565843708714-52ecf69ab81f?ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+
+    @media (max-width: 768px) {
+      .register {
+        font-size: 50%;
+      }
+    }
+
+    input,
+    button {
+      outline: none;
+      border: none;
+    }
+
+    .login__check {
+      width: 200px;
+      height: 200px;
+    }
+
+    .login {
+      position: absolute;
+      left: 0%;
+      top: 0%;
+      height: 100%;
+      width: 600px;
+      background-color: #7f5a83;
+      background: transparent;
+      transform: scale(1);
+    }
+
+    .login__form {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .login__row {
+      height: 5rem;
+      width: 70%;
+      padding-top: 1rem;
+      transition: all 1s ease-in;
+      font-size: 1rem;
+    }
+
+    .login__input {
+      display: inline-block;
+      width: 20rem;
+      height: 100%;
+      padding-left: 12%;
+      font-size: 1rem;
+      background: transparent;
+      color: #FDFCFD;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 1s ease-in;
+    }
+
+    .login__input:focus {
+      border: 2px solid black;
+    }
+
+    .login__submit {
+      position: absolute;
+      margin: 10px;
+      top: 80%;
+      left: 50%;
+      width: 20%;
+      height: 4rem;
+      color: rgba(255, 255, 255, 0.8);
+      background: #4b3bda;
+      font-size: 1rem;
+      border-radius: 3rem;
+      cursor: pointer;
+      overflow: hidden;
+      transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+    }
+
+    @media (max-width:950px) {
+      .login__submit {
+        top: 88%;
+        margin-bottom: 15px;
+      }
+    }
+
+    .login__submit:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -1.5rem;
+      margin-top: -1.5rem;
+      width: 3rem;
+      height: 3rem;
+      border: 2px dotted #fff;
+      border-radius: 50%;
+      border-left: none;
+      border-bottom: none;
+      transition: opacity 0.1s 0.4s;
+      opacity: 0;
+    }
+
+    .login__submit.processing {
+      width: 4rem;
+      font-size: 0;
+    }
+
+    .login__submit.processing:after {
+      opacity: 1;
+      animation: rotate 0.5s 0.4s infinite linear;
+    }
+
+    .login__submit.success {
+      transition: transform 0.3s 0.1s ease-out, opacity 0.1s 0.3s, background-color 0.1s 0.3s;
+      transform 0.3s 0.1s ease-out;
+      transform: scale(30);
+      opacity: 0.9;
+    }
+
+    .login__submit.success:after {
+      -webkit-transition: opacity 0.1s 0s;
+      transition: opacity 0.1s 0s;
+      opacity: 0;
+      animation: none;
+    }
+
+    .login__signup {
+      font-size: 1.2rem;
+      color: #ABA8AE;
+    }
+
+    .login__signup a {
+      color: #fff;
+      cursor: pointer;
+    }
+
+    @-webkit-keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes animatePath {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    #section07{
+      position: absolute;
+      top: 30%;
+      left: 50%;
+    }
+
+
+    .container:hover #section07{
+      opacity: 0;
+    }
+    .demo a {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      z-index: 2;
+      display: inline-block;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      color: #fff;
+      font : normal 400 20px/1 'Josefin Sans', sans-serif;
+      letter-spacing: .1em;
+      text-decoration: none;
+      transition: opacity .3s;
+    }
+    .demo a:hover {
+      opacity: .5;
+    }
+
+      #section07 a {
+        padding-top: 80px;
+      }
+      #section07 a span {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 24px;
+        height: 24px;
+        margin-left: -12px;
+        border-left: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-animation: sdb07 2s infinite;
+        animation: sdb07 2s infinite;
+        opacity: 0;
+        box-sizing: border-box;
+      }
+      #section07 a span:nth-of-type(1) {
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+      }
+      #section07 a span:nth-of-type(2) {
+        top: 16px;
+        -webkit-animation-delay: .15s;
+        animation-delay: .15s;
+      }
+      #section07 a span:nth-of-type(3) {
+        top: 32px;
+        -webkit-animation-delay: .3s;
+        animation-delay: .3s;
+      }
+      @-webkit-keyframes sdb07 {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      @keyframes sdb07 {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+  </style>
+</head>
+
+<body>
+  <section class="loading" style="position:relative;display:flex; justify-content:center; align-items:center; background-color:black; width:100%; height: 100%;">
+    <span class="loader-19"></span>
+    <img style="width:100px; position:absolute;" src="logo.png" alt="logo-loader">
+  </section>
+  <div class="sp-container">
+    <h2 class="frame-1">BIT</h2>
+    <h2 class="frame-2">TEXARITA</h2>
+  </div>
+
+  <div class="area">
+    <div class="container">
+      <div class="text">
+        <img class="event-pic" style="width:300px; cursor:pointer;" src="event.png" alt="event-name">
+      </div>
+      <section id="section07" class="demo">
+    <a><span></span><span></span><span></span>Touch Me</a>
+  </section>
+              <div class="clip clip1">
+      </div>
+      <div class="clip clip2">
+      </div>
+      <div class="clip clip3">
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="pinfo">
+        <div class="cancel" style="position:absolute; top:0; right:0; cursor:pointer; z-index:250;">
+          <img src="cancel.png" alt="cancel-icon">
+        </div>
+        <div class="pi" style="position:absolute; width:100%;height:100%;">
+          <h3 style="color:#00bcd4; margin:2%;margin-left:30%; ">Rules and Regulations</h3>
+          <h1 class="title"><span style="color:#00bcd4;">P</span>aper <span style="color:#00bcd4;">P</span>resentation</h1>
+          <p>👉🏻Abstract shouldn't exceed more than 250 words.<br>
+            👉🏻Presentation shouldn't exceed more than 6 mins.<br></p>
+          <h3 style="color:#00bcd4;margin:2%;margin-left:30%;">Topics</h3>
+          <p>
+            ✍🏻 Agricultural application of textiles <br>
+            ✍🏼 E-Commerce area for textile industry <br>
+            ✍🏼 Manufacturing of mask using natural fibre <br>
+            ✍🏼 Textile reinforced materials structures <br>
+            ✍🏼 Emerging opportunities in technical textiles <br>
+            ✍🏼 Development of smart textiles for protective <br> textiles <br>
+            ✍🏼 Bio-Technology in Textile Industry <br>
+            ✍🏼 Textile Industry 4.0 <br>
+            ✍🏼 Health care and medical textiles <br>
+            ✍🏼 Fibers for the next generation <br>
+            ✍🏼 Recycling Process of Textile Waste <br>
+          </p>
+          <h3 class="sub">Last date for abstract submission:</h3>
+        </div>
+      </div>
+
+      <div class="qinfo">
+        <div class="cancel" style="position:absolute; top:0; right:0; cursor:pointer; z-index:250;">
+          <img src="cancel.png" alt="cancel-icon">
+        </div>
+        <div class="pi" style="position:absolute; width:100%;height:100%;">
+          <h1 class="title"><span style="color:#00bcd4;">Q</span>uiz</h1>
+          <h3 style="color:#00bcd4; margin:2%;margin-left:30%; ">Rules and Regulations</h3>
+          <p>👉🏻A team shall consist of minimum of one to maximum of two students.<br>
+            👉🏻The decision of the quiz-master will be final and will not be subjected to any change.<br>
+            ✍🏻 Try to avoid mic problem and network issue.<br>
+            ✍🏼 There will be three stage rounds conducted. <br>
+          </p>
+        </div>
+      </div>
+      <div class="oinfo">
+        <div class="cancel" style="position:absolute; top:0; right:0; cursor:pointer; z-index:250;">
+          <img src="cancel.png" alt="cancel-icon">
+        </div>
+        <div class="pi" style="position:absolute; width:100%;height:100%;">
+          <h1 class="title"><span style="color:#00bcd4;">P</span>hotography</h1>
+          <h3 style="color:#00bcd4; margin:2%;margin-left:30%; ">Rules and Regulations</h3>
+          <p>👉🏻Edited photos will not be accepted. (Don’t use photoshop, light room etc..)<br>
+            👉🏻Black and white photo will not be allowed.<br>
+            👉🏻Send the original image in JPEG format with the word document through mail.<br>
+            👉🏻Auto like apps should not be used.<br>
+            👉🏻Your photo will be uploaded in Instagram and the photo with maximum likes will be shortlisted. </p>
+          <h3 style="color:#00bcd4;margin:2%;margin-left:30%;">Topics</h3>
+          <p>
+            ✍🏻 Colorful photography( photo must have more colors) <br>
+            ✍🏼 Monochrome photography<br>
+            ✍🏼 Vintage photograph <br>
+          </p>
+        </div>
+      </div>
+
+      <div class="content">
+        <h1 class="eve" style="color:white; top:5%; position:absolute; left:45%; font-size:50px;">EVENTS</h1>
+        <div class="paper">
+          <div class="ptext">
+            <h3 class"pname" style="color:white; font-size:40px; margin-left:5px; padding:20px;border:15px  dashed;">Paper <br> Presentaion</h3>
+          </div>
+          <div class="ppic">
+            <img style="width:100px; height:100px;" src="pp.png" alt="paperlogo">
+          </div>
+        </div>
+        <div class="quiz">
+          <div class="qtext">
+            <h3 class"qname" style="color:white; font-size:40px; margin-left:5px; padding: 20px 90px;border:15px  dashed;"><span style="color:#00bcd4">Q</span>uiz</h3>
+          </div>
+          <div class="qpic">
+            <img style="width:100px; height:100px;" src="quiz.png" alt="quiz-logo">
+          </div>
+        </div>
+
+        <div class="poto">
+          <div class="otext">
+            <h3 class"oname" style="color:white; font-size:40px; margin-left:5px; padding:20px;border:15px  dashed;"><span style="color:#00bcd4">P</span>hotography</h3>
+          </div>
+          <div class="opic">
+            <img style="width:100px; height:100px;" src="poto.png" alt="poto-logo">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="register">
+      <div class="login">
+        <form method="post" autocomplete="off" name="google-sheet">
+          <div class="login__form">
+            <div class="login__row">
+              <img style="position: absolute;
+        margin: 0%;
+        padding-top: 2%" src="profile-user.png" alt="">
+              <input type="text" name="name" class="login__input name" placeholder="Name" />
+            </div>
+            <div class="login__row">
+              <img style="position: absolute;
+        margin: 0%;
+        padding-top: 2%" src="mail.png" alt="">
+              <input type="mail" name="mail" class="login__input name" placeholder="Mailid" />
+            </div>
+            <div class="login__row">
+              <img style="position: absolute;
+        margin: 0%;
+        padding-top: 2%" src="cl.png" alt="">
+              <input type="text" name="college" class="login__input name" placeholder="College-Name" />
+            </div>
+            <div class="login__row">
+              <img style="position: absolute;
+        margin: 0%;
+        padding-top: 2%" src="phones.png" alt="">
+              <input type="text" name="phone" class="login__input name" placeholder="Phn-Number" />
+            </div>
+            <div class="login__row">
+              <img style="position: absolute;
+        margin: 0%;
+        padding-top: 2%" src="refer.png" alt="">
+              <input type="text" name="rnum" class="login__input pass" placeholder="Ref. Number" />
+            </div>
+            <input class="paper" type="hidden" name="paper" value="No" />
+            <input class="quiz" type="hidden" name="quiz" value="No" />
+            <input class="photo" type="hidden" name="photo" value="No" />
+          </div>
+      </div>
+      <div class="checker">
+        <input id='one' name="paper" type='checkbox' />
+        <label for='one'>
+          <span></span>
+          Paper Presentaion
+          <ins><i>Paper Presentaion</i></ins>
+        </label>
+        <input id='two' name="quiz" type='checkbox' />
+        <label for='two'>
+          <span></span>
+          Quiz
+          <ins><i>Quiz</i></ins>
+        </label>
+        <input id='three' name="photo" type='checkbox' />
+        <label for='three'>
+          <span></span>
+          Photography
+          <ins><i>Photography</i></ins>
+        </label>
+        <input id='four' name="photo" type='checkbox' />
+        <label for='four'>
+        </label>
+      </div>
+      <button type="submit" onclick="sendEmail()" class="login__submit">REGISTER</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+
+  <script type="text/javascript">
+    function sendEmail() {
+      Email.send({
+          Host: "smtp.gmail.com",
+          Username: "texarita2020bit@gmail.com",
+          Password: "textiletechnology",
+          To: 'sujanprakashp1234@gmail.com',
+          From: "texarita2020bit@gmail.com",
+          Subject: "Sending Email using javascript",
+          Body: "Well that was easy!!",
+        })
+        .then(function(message) {
+          alert("mail sent successfully")
+        });
+    }
+
+
+
+
+    $(document).ready(function() {
+      $(".register").fadeOut(1);
+      $(".sp-container").fadeOut(1);
+      $(".container").fadeOut(1);
+      $(".main").fadeOut(1);
+      $(".pinfo").fadeOut(1);
+      $(".qinfo").fadeOut(1);
+      $(".oinfo").fadeOut(1);
+
+      setTimeout(function() {
+        $(".loading").fadeOut("slow", function() {
+          $(".loading").hide(function() {
+            $(".sp-container").fadeIn(function() {
+              setTimeout(function() {
+                $(".sp-container").fadeIn();
+                $(".sp-container").hide(function() {
+                  $(".container").fadeIn("slow", function() {
+                    $(".main").fadeIn(1);
+                    $(".register").fadeIn(1);
+                  });
+                });
+              }, 6500);
+            });
+          });
+        });
+      }, 5000);
+
+      $(".paper").mouseover(function() {
+        $(".ptext").animate({
+          top: '-400px'
+        }, 100, 'linear');
+
+      });
+      $(".paper").mouseout(function() {
+        $(".ptext").animate({
+          top: '25%'
+        }, 100, 'linear');
+      });
+
+      $(".ppic").click(function() {
+        $(".eve").fadeOut("fast");
+        $(".quiz").fadeOut("fast");
+        $(".poto").fadeOut("fast");
+        $(".paper").fadeOut("slow", function() {
+          $(".pinfo").fadeIn("slow");
+          $(".cancel").fadeIn("slow");
+        });
+        $(".cancel").click(function() {
+          $(".pinfo").fadeOut("fast");
+          $(".cancel").fadeOut("slow");
+          $(".eve").fadeIn("fast");
+          $(".paper").fadeIn("slow");
+          $(".quiz").fadeIn("fast");
+          $(".poto").fadeIn("fast");
+        });
+
+      });
+      $(".quiz").mouseover(function() {
+        $(".qtext").animate({
+          top: '-400px'
+        }, 100, 'linear');
+      });
+      $(".quiz").mouseout(function() {
+        $(".qtext").animate({
+          top: '25%'
+        }, 100, 'linear');
+      });
+
+
+      $(".qpic").click(function() {
+        $(".eve").fadeOut("fast");
+        $(".paper").fadeOut("slow");
+        $(".poto").fadeOut("slow");
+        $(".quiz").fadeOut("slow", function() {
+          $(".qinfo").fadeIn("slow");
+          $(".cancel").fadeIn("slow");
+        });
+        $(".cancel").click(function() {
+          $(".qinfo").fadeOut("fast");
+          $(".cancel").fadeOut("slow");
+          $(".eve").fadeIn("fast");
+          $(".quiz").fadeIn("slow");
+          $(".paper").fadeIn("slow");
+          $(".poto").fadeIn("slow");
+        });
+
+      });
+
+
+      $(".poto").mouseover(function() {
+        $(".otext").animate({
+          top: '-400px'
+        }, 100, 'linear');
+      });
+      $(".poto").mouseout(function() {
+        $(".otext").animate({
+          top: '25%'
+        }, 100, 'linear');
+      });
+
+
+      $(".poto").click(function() {
+        $(".eve").fadeOut("fast");
+        $(".paper").fadeOut("slow");
+        $(".quiz").fadeOut("slow");
+        $(".poto").fadeOut("slow", function() {
+          $(".oinfo").fadeIn("slow");
+          $(".cancel").fadeIn("slow");
+        });
+        $(".cancel").click(function() {
+          $(".oinfo").fadeOut("fast");
+          $(".cancel").fadeOut("slow");
+          $(".eve").fadeIn("fast");
+          $(".poto").fadeIn("slow");
+          $(".paper").fadeIn("slow");
+          $(".quiz").fadeIn("slow");
+        });
+
+      });
+
+      $login = $(".login");
+      $(document).on("click", ".login__submit", function(e) {
+        var that = this;
+        $(that).addClass("processing");
+        setTimeout(function() {
+          $(that).addClass("success");
+        }, 1500);
+      });
+
+      $('form').submit(function(e) {
+        var form = this;
+        var amount = 0;
+
+        var name = $(".name").val();
+
+        console.log(p);
+        var len = $("input[type=checkbox]:checked").length;
+        var l = $("input[type=checkbox]:checked");
+        if ($("input[name=paper]").is(
+            ":checked")) {
+          $('.paper').val("Yes");
+          var p = $(".paper").val();
+          console.log(p);
+        }
+        if ($("input[name=quiz]").is(
+            ":checked")) {
+          $('.quiz').val("Yes");
+          var q = $(".quiz").val();
+          console.log(q);
+        }
+        if ($("input[name=photo]").is(
+            ":checked")) {
+          $('.photo').val("Yes");
+          var s = $(".photo").val();
+          console.log(s);
+        }
+
+        if (len == 0) {
+          alert("Please select any event to register..!");
+        } else {
+          if (len == 1) {
+            amount = 50;
+          }
+          if (len == 2) {
+            amount = 100;
+          }
+          if (len == 3) {
+            amount = 150;
+          }
+          alert("Hi " + name + " Please check that your credentials are right.!")
+        }
+        e.preventDefault();
+        $("h1").append(amount);
+        setTimeout(function() {
+          form.submit();
+        }, 2000);
+      });
+    });
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyAnAF3v3LPzeSnc0QKVpmtn7Fzl5zp1_HXJznqPZRXNUCg8_4/exec'
+    const form = document.forms['google-sheet']
+
+    form.addEventListener('submit', e => {
+      setTimeout(function() {
+        e.preventDefault()
+        fetch(scriptURL, {
+            method: 'POST',
+            body: new FormData(form)
+          })
+          .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+          .catch(error => console.error('Error!', error.message))
+
+      }, 2000);
+    })
+  </script>
+</body>
+
+</html>
