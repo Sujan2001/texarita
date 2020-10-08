@@ -1072,11 +1072,11 @@
       setTimeout(function() {
         $(".loading").fadeOut("slow", function() {
           $(".loading").hide(function() {
+            $("body").css("background-color","white");
             $(".sp-container").fadeIn(function() {
               setTimeout(function() {
                 $(".sp-container").fadeIn();
                 $(".sp-container").hide(function() {
-                  $("body").css("background-color","white");
                   $(".container").fadeIn("slow", function() {
                     $(".main").fadeIn(1);
                     $(".register").fadeIn(1);
