@@ -6,150 +6,273 @@
   <link rel="stylesheet" href="style.css">
   <title></title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script src="https://smtpjs.com/v3/smtp.js">
   </script>
   <style media="screen">
-
-    .checker {
-      position: absolute;
-      right: 10%;
-      top: 10%;
-      font-size: 1.5rem;
-    }
-
-    @media (max-width:950px) {
-      .checker {
-        display: flex;
-        top: 77%;
-        right: 3%;
-        margin: 25px;
-        font-size: 1rem;
-        margin: 1rem;
-      }
-    }
-
-
     input[type='checkbox'] {
-      height: 0;
-      width: 0;
-    }
-
-    input[type='checkbox']+label {
-      position: relative;
-      display: flex;
-      margin: 1rem;
-      align-items: center;
-      color: chocolate;
-      transition: color 250ms cubic-bezier(.4, .0, .23, 1);
-    }
-
-    input[type='checkbox']+label>ins {
-      position: absolute;
-      display: block;
-      bottom: 0;
-      left: 2em;
-      height: 0;
-      width: 100%;
-      overflow: hidden;
-      text-decoration: none;
-      transition: height 300ms cubic-bezier(.4, .0, .23, 1);
-    }
-
-    input[type='checkbox']+label>ins>i {
-      position: absolute;
-      bottom: 0;
-      font-style: normal;
-      color: #4FC3F7;
-    }
-
-    input[type='checkbox']+label>span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: 1em;
-      width: 1em;
-      height: 1em;
-      background: transparent;
-      border: 2px solid #9E9E9E;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: all 250ms cubic-bezier(.4, .0, .23, 1);
-    }
-
-    input[type='checkbox']+label:hover,
-    input[type='checkbox']:focus+label {
-      color: #fff;
-    }
-
-    input[type='checkbox']+label:hover>span,
-    input[type='checkbox']:focus+label>span {
-      background: rgba(255, 255, 255, .1);
-    }
-
-    input[type='checkbox']:checked+label>ins {
-      height: 100%;
-    }
-
-    input[type='checkbox']:checked+label>span {
-      border: .3em solid #FFEB3B;
-      animation: shrink-bounce 200ms cubic-bezier(.4, .0, .23, 1);
-    }
-
-    input[type='checkbox']:checked+label>span:before {
-      content: "";
-      position: absolute;
-      top: 0.8em;
-      left: 0.4em;
-      border-right: 3px solid transparent;
-      border-bottom: 3px solid transparent;
-      transform: rotate(45deg);
-      transform-origin: 0% 100%;
-      animation: checkbox-check 125ms 250ms cubic-bezier(.4, .0, .23, 1) forwards;
-    }
-
-    @keyframes shrink-bounce {
-      0% {
-        transform: scale(1);
-      }
-
-      33% {
-        transform: scale(.85);
-      }
-
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    @keyframes checkbox-check {
-      0% {
+        height: 0;
         width: 0;
+      }
+
+      input[type='checkbox']+label {
+        position: relative;
+        display: flex;
+        margin: 1rem;
+        align-items: center;
+        color: chocolate;
+        transition: color 250ms cubic-bezier(.4, .0, .23, 1);
+      }
+
+      input[type='checkbox']+label>ins {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 2em;
         height: 0;
-        border-color: #212121;
-        transform: translate3d(0, 0, 0) rotate(45deg);
+        width: 100%;
+        overflow: hidden;
+        text-decoration: none;
+        transition: height 300ms cubic-bezier(.4, .0, .23, 1);
       }
 
-      33% {
-        width: .2em;
-        height: 0;
-        transform: translate3d(0, 0, 0) rotate(45deg);
+      input[type='checkbox']+label>ins>i {
+        position: absolute;
+        bottom: 0;
+        font-style: normal;
+        color: #4FC3F7;
       }
 
-      100% {
-        width: .2em;
-        height: .5em;
-        border-color: blue;
-        transform: translate3d(0, -.5em, 0) rotate(45deg);
+      input[type='checkbox']+label>span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1em;
+        width: 1em;
+        height: 1em;
+        background: transparent;
+        border: 2px solid #9E9E9E;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: all 250ms cubic-bezier(.4, .0, .23, 1);
       }
-    }
 
-    .area{
-      width: 100%;
-      height: 100%;
-      overflow-y: scroll;
-    }
+      input[type='checkbox']+label:hover,
+      input[type='checkbox']:focus+label {
+        color: #fff;
+      }
 
+      input[type='checkbox']+label:hover>span,
+      input[type='checkbox']:focus+label>span {
+        background: rgba(255, 255, 255, .1);
+      }
+
+      input[type='checkbox']:checked+label>ins {
+        height: 100%;
+      }
+
+      input[type='checkbox']:checked+label>span {
+        border: .3em solid chocolate;
+        animation: shrink-bounce 200ms cubic-bezier(.4, .0, .23, 1);
+      }
+
+      input[type='checkbox']:checked+label>span:before {
+        content: "";
+        color:black;
+        position: absolute;
+        top: 0.8em;
+        left: 0.4em;
+        border-right: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        transform: rotate(45deg);
+        transform-origin: 0% 100%;
+        animation: checkbox-check 125ms 250ms cubic-bezier(.4, .0, .23, 1) forwards;
+      }
+
+      @keyframes shrink-bounce {
+        0% {
+          transform: scale(1);
+        }
+
+        33% {
+          transform: scale(.85);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes checkbox-check {
+        0% {
+          width: 0;
+          height: 0;
+          border-color: #212121;
+          transform: translate3d(0, 0, 0) rotate(45deg);
+        }
+
+        33% {
+          width: .2em;
+          height: 0;
+          transform: translate3d(0, 0, 0) rotate(45deg);
+        }
+
+        100% {
+          width: .2em;
+          height: .5em;
+          border-color: black;
+          transform: translate3d(0, -.5em, 0) rotate(45deg);
+        }
+      }
+
+      .end{
+        animation: mymove 5s infinite;
+  }
+
+  @keyframes mymove {
+    from {background-color: red;}
+    to {background-color: blue;}
+  }
+  .login-wrap{
+  width:100%;
+  margin:auto;
+  max-width:525px;
+  min-height:750px;
+  position:relative;
+  background:url('https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg') no-repeat center;
+  box-shadow: 0px -1px 134px black, 0px 15px 42px black;
+  }
+
+  .login-html{
+  width:100%;
+  height:100%;
+  position:absolute;
+  padding:90px 70px 50px 70px;
+  background:rgba(40,57,101,.9);
+  }
+  .login-html .sign-up-htm{
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  position:absolute;
+  transform:rotateY(180deg);
+  backface-visibility:hidden;
+  transition:all .4s linear;
+  }
+  .login-html .sign-up,
+  .login-form .group .check{
+  display:none;
+  }
+  .login-html .tab,
+  .login-form .group .label,
+  .login-form .group .button{
+  text-transform:uppercase;
+  }
+  .login-html .tab{
+  font-size:35px;
+  border: 25px dashed black;
+      padding: 50px;
+      margin: 14%;
+  display:inline-block;
+  transition: all 1s linear;
+  }
+  .login-html .sign-up:checked + .tab{
+    border:none;
+    padding: 2%;
+    border-bottom:2px solid transparent;
+  color:#fff;
+  border-color:#1161ee;
+  margin:0 15px 10px 0;
+  }
+
+  .login-form{
+  min-height:345px;
+  position:relative;
+  perspective:1000px;
+  transform-style:preserve-3d;
+  }
+  .login-form .group{
+  margin-bottom:15px;
+  }
+  .login-form .group .label,
+  .login-form .group .input,
+  .login-form .group .button{
+  width:100%;
+  color:#fff;
+  display:block;
+  }
+  .login-form .group .input,
+  .login-form .group .button{
+  border:none;
+  padding:15px 20px;
+  border-radius:25px;
+  background:rgba(255,255,255,.1);
+  }
+  .login-form .group input[data-type="password"]{
+  text-security:circle;
+  -webkit-text-security:circle;
+  }
+  .login-form .group .label{
+  color:#aaa;
+  font-size:12px;
+  }
+  .login-form .group .button{
+  background:#1161ee;
+  }
+  .login-form .group label .icon{
+  width:15px;
+  height:15px;
+  border-radius:2px;
+  position:relative;
+  display:inline-block;
+  background:rgba(255,255,255,.1);
+  }
+  .login-form .group label .icon:before,
+  .login-form .group label .icon:after{
+  content:'';
+  width:10px;
+  height:2px;
+  background:#fff;
+  position:absolute;
+  transition:all .2s ease-in-out 0s;
+  }
+  .login-form .group label .icon:before{
+  left:3px;
+  width:5px;
+  bottom:6px;
+  transform:scale(0) rotate(0);
+  }
+  .login-form .group label .icon:after{
+  top:6px;
+  right:0;
+  transform:scale(0) rotate(0);
+  }
+  .login-form .group .check:checked + label{
+  color:#fff;
+  }
+  .login-form .group .check:checked + label .icon{
+  background:#1161ee;
+  }
+  .login-form .group .check:checked + label .icon:before{
+  transform:scale(1) rotate(45deg);
+  }
+  .login-form .group .check:checked + label .icon:after{
+  transform:scale(1) rotate(-45deg);
+  }
+  .login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+  transform:rotate(0);
+  }
+
+  .hr{
+  height:2px;
+  margin:60px 0 50px 0;
+  background:rgba(255,255,255,.2);
+  }
+  .foot-lnk{
+  text-align:center;
+  }
     .load {
       display: inline-block;
       z-index: 1;
@@ -190,32 +313,45 @@
     }
 
     .sp-container {
-      height:110rem;
+      height:100%;
       width:100%;
       background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     h2 {
-      top: 30%;
-      left: 30%;
       position: absolute;
-      height: 400px;
-      font-size: 90px;
-      width: 400px;
       text-align: center;
       color: transparent;
       animation: blurFadeInOut 3s ease-in backwards;
     }
 
     h2.frame-1 {
+        font-size: 90px;
       animation-delay: 0.5s;
+    }
+    .hs{
+        animation: blur 3s ease-in forwards;
+        font-size: 90px;
+      animation-delay: 0.5s;
+    }
+    .hs1{
+        animation: blur 3s ease-in forwards;
+        font-size: 120px;
+      animation-delay: 3.5s;
+    }
+    @keyframes blur {
+      100%{opacity: 0;}
     }
 
     h2.frame-2 {
+        font-size: 120px;
       animation-delay: 3.5s;
     }
 
@@ -545,7 +681,7 @@
       margin: 2%;
       position: absolute;
       margin-left: 20%;
-      display: inline;
+      display: content;
     }
 
     @media (max-width:1000px) {
@@ -606,167 +742,6 @@
         top: 70%;
       }
     }
-
-
-    .register {
-      position: relative;
-      width: 90%;
-      margin: 5%;
-      box-sizing: border-box;
-      height:50rem;
-      overflow: hidden;
-      background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1565843708714-52ecf69ab81f?ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-
-
-    @media (max-width: 768px) {
-      .register {
-        font-size: 50%;
-      }
-    }
-
-    input,
-    button {
-      outline: none;
-      border: none;
-    }
-
-    .login__check {
-      width: 200px;
-      height: 200px;
-    }
-
-    .login {
-      position: absolute;
-      left: 0%;
-      top: 0%;
-      height: 100%;
-      width: 600px;
-      background-color: #7f5a83;
-      background: transparent;
-      transform: scale(1);
-    }
-
-    .login__form {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      padding: 1.5rem 2.5rem;
-      text-align: center;
-    }
-
-    .login__row {
-      height: 5rem;
-      width: 70%;
-      padding-top: 1rem;
-      transition: all 1s ease-in;
-      font-size: 1rem;
-    }
-
-    .login__input {
-      display: inline-block;
-      width: 20rem;
-      height: 100%;
-      padding-left: 12%;
-      font-size: 1rem;
-      background: transparent;
-      color: #FDFCFD;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 1s ease-in;
-    }
-
-    .login__input:focus {
-      border: 2px solid black;
-    }
-
-    .login__submit {
-      position: absolute;
-      margin: 10px;
-      top: 80%;
-      left: 50%;
-      width: 20%;
-      height: 4rem;
-      color: rgba(255, 255, 255, 0.8);
-      background: #4b3bda;
-      font-size: 1rem;
-      border-radius: 3rem;
-      cursor: pointer;
-      overflow: hidden;
-      transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
-    }
-
-    @media (max-width:950px) {
-      .login__submit {
-        top: 88%;
-        margin-bottom: 15px;
-      }
-    }
-
-    .login__submit:after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-left: -1.5rem;
-      margin-top: -1.5rem;
-      width: 3rem;
-      height: 3rem;
-      border: 2px dotted #fff;
-      border-radius: 50%;
-      border-left: none;
-      border-bottom: none;
-      transition: opacity 0.1s 0.4s;
-      opacity: 0;
-    }
-
-    .login__submit.processing {
-      width: 4rem;
-      font-size: 0;
-    }
-
-    .login__submit.processing:after {
-      opacity: 1;
-      animation: rotate 0.5s 0.4s infinite linear;
-    }
-
-    .login__submit.success {
-      transition: transform 0.3s 0.1s ease-out, opacity 0.1s 0.3s, background-color 0.1s 0.3s;
-      transform 0.3s 0.1s ease-out;
-      transform: scale(30);
-      opacity: 0.9;
-    }
-
-    .login__submit.success:after {
-      -webkit-transition: opacity 0.1s 0s;
-      transition: opacity 0.1s 0s;
-      opacity: 0;
-      animation: none;
-    }
-
-    .login__signup {
-      font-size: 1.2rem;
-      color: #ABA8AE;
-    }
-
-    .login__signup a {
-      color: #fff;
-      cursor: pointer;
-    }
-
-    @-webkit-keyframes rotate {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @-webkit-keyframes animatePath {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
     #section07{
       position: absolute;
       top: 30%;
@@ -796,7 +771,7 @@
     }
 
       #section07 a {
-        padding-top: 80px;
+        padding-top: 127px;
       }
       #section07 a span {
         position: absolute;
@@ -855,16 +830,18 @@
 </head>
 
 <body>
-  <section class="loading" style="position:relative;display:flex; justify-content:center; align-items:center; background-color:black; width:100%;">
+  <section class="loading" style="position:relative;display:flex; justify-content:center; top:40%;align-items:center; background-color:black; width:100%;">
     <span class="loader-19"></span>
     <img style="width:100px; position:absolute;" src="logo.png" alt="logo-loader">
   </section>
   <div class="sp-container">
-    <h2 class="frame-1">BIT</h2>
-    <h2 class="frame-2">TEXARITA</h2>
+    <h2 class="frame-1"><span class="hs" style="color:#00bcd4">B</span>IT</h2>
+    <h2 class="frame-2"><span class="hs1" style="color:red">T</span>EXARITA</h2>
   </div>
 
-  <div class="area">
+  <div class="area" style=" width: 100%;
+      height: 100%;
+      overflow-y: scroll;">
     <div class="container">
       <div class="text">
         <img class="event-pic" style="width:300px; cursor:pointer;" src="event.png" alt="event-name">
@@ -886,26 +863,37 @@
           <img src="cancel.png" alt="cancel-icon">
         </div>
         <div class="pi" style="position:absolute; width:100%;height:100%;">
-          <h3 style="color:#00bcd4; margin:2%;margin-left:30%; ">Rules and Regulations</h3>
           <h1 class="title"><span style="color:#00bcd4;">P</span>aper <span style="color:#00bcd4;">P</span>resentation</h1>
-          <p>👉🏻Abstract shouldn't exceed more than 250 words.<br>
+          <h3 style="color:#00bcd4; margin:2%;margin-left:30%; ">Rules and Regulations</h3>
+          <p style="display:inline-block;">👉🏻Abstract shouldn't exceed more than 250 words.<br>
             👉🏻Presentation shouldn't exceed more than 6 mins.<br></p>
-          <h3 style="color:#00bcd4;margin:2%;margin-left:30%;">Topics</h3>
-          <p>
-            ✍🏻 Agricultural application of textiles <br>
-            ✍🏼 E-Commerce area for textile industry <br>
-            ✍🏼 Manufacturing of mask using natural fibre <br>
+          <h3 style="color:#00bcd4;margin:2%;margin-left:15%;">Topics of interest include, but are not limited to the following</h3>
+          <p style="display:inline-block;">
+            ✍🏻 Agricultural application of textiles  <br>
+            ✍🏼 KHADI - The pride of India <br>
+            ✍🏼 Seamless garments -  A fashion trend <br>
             ✍🏼 Textile reinforced materials structures <br>
             ✍🏼 Emerging opportunities in technical textiles <br>
             ✍🏼 Development of smart textiles for protective <br> textiles <br>
             ✍🏼 Bio-Technology in Textile Industry <br>
             ✍🏼 Textile Industry 4.0 <br>
             ✍🏼 Health care and medical textiles <br>
-            ✍🏼 Fibers for the next generation <br>
+            ✍🏼 Fashion changes - Post COVID-19 <br>
             ✍🏼 Recycling Process of Textile Waste <br>
           </p>
-          <h3 class="sub">Last date for abstract submission:</h3>
+          <h3 class="sub" style="display:content;">Last date for abstract submission : <span style="color:red;">1-11-2020</span></h3>
+          <h3 style="color:white; margin-left:15%; margin:3%; padding:25px;">For Submission : Submit your Abstract and Presentation here : <a style="color:green;" href="maito:texaritapaper@gmail.com">texaritapaper@gmail.com</a></h3>
+            <div class="" style="position:absolute; width:200px; top:75%; left:10%; ">
+              <h3 style="color:white; padding:7%; ">MOHANA PRASATH T</h3>
+              <p style="left:10%;">8056463969</p>
+            </div>
+            <div class="" style="position:absolute; width:180px; top:75%; left:70%; ">
+              <h3 style="color:white; padding:7%; ">SWETHA REDDY L</h3>
+              <p style="left:10%;">9629116689</p>
+            </div>
         </div>
+
+
       </div>
 
       <div class="qinfo">
@@ -919,7 +907,18 @@
             👉🏻The decision of the quiz-master will be final and will not be subjected to any change.<br>
             ✍🏻 Try to avoid mic problem and network issue.<br>
             ✍🏼 There will be three stage rounds conducted. <br>
+            ✍🏼 Further details will be mailed from texarita2020.quiz@gmail.co<br>
+
           </p>
+          <div class="" style="position:absolute; width:140px; top:70%; left:10%; ">
+            <h3 style="color:white; padding:7%; ">PAVITHRA K L V</h3>
+            <p style="left:10%;">7867897978</p>
+          </div>
+          <div class="" style="position:absolute; width:180px; top:70%; left:70%; ">
+            <h3 style="color:white; padding:7%; ">GOKULASREE A R</h3>
+            <p style="left:10%;">9751281944</p>
+          </div>
+
         </div>
       </div>
       <div class="oinfo">
@@ -928,7 +927,7 @@
         </div>
         <div class="pi" style="position:absolute; width:100%;height:100%;">
           <h1 class="title"><span style="color:#00bcd4;">P</span>hotography</h1>
-          <h3 style="color:#00bcd4; margin:2%;margin-left:30%; ">Rules and Regulations</h3>
+          <h3 style="color:#00bcd4; margin:2%; margin-left:30%;">Rules and Regulations</h3>
           <p>👉🏻Edited photos will not be accepted. (Don’t use photoshop, light room etc..)<br>
             👉🏻Black and white photo will not be allowed.<br>
             👉🏻Send the original image in JPEG format with the word document through mail.<br>
@@ -940,6 +939,16 @@
             ✍🏼 Monochrome photography<br>
             ✍🏼 Vintage photograph <br>
           </p>
+          <h3 style="color:white; margin-left:15%; margin:3%; padding:25px;">For Submission : Submit your Abstract and Presentation here : <a style="color:green;" href="maito:photographytxt2020@gmail.com">photographytxt2020@gmail.com</a></h3>
+
+          <div class="" style="position:absolute; width:140px; top:70%; left:10%; ">
+            <h3 style="color:white; padding:7%; ">RAJBIR SINGH</h3>
+            <p style="left:10%;">7837547937</p>
+          </div>
+          <div class="" style="position:absolute; width:140px; top:70%; left:70%; ">
+            <h3 style="color:white; padding:7%; ">ELANGO C</h3>
+            <p style="left:10%;">9659838418</p>
+          </div>
         </div>
       </div>
 
@@ -972,88 +981,149 @@
         </div>
       </div>
     </div>
-    <div class="register">
-      <div class="login">
+    <div class="login-wrap">
+      <section id="section07" class="demo" style="margin:5%;">
+    <a><span class="down"></span><span class="down"></span><span class="down"></span></a>
+  </section>
+  <div class="login-html">
+    <input id="tab-2"  type="radio" name="tab" class="sign-up"><label style="color:darkgrey;" for="tab-2" class="tab">REGISTER</label>
+    <div class="login-form">
+      <div class="sign-up-htm">
         <form method="post" autocomplete="off" name="google-sheet">
-          <div class="login__form">
-            <div class="login__row">
-              <img style="position: absolute;
-        margin: 0%;
-        padding-top: 2%" src="profile-user.png" alt="">
-              <input type="text" name="name" class="login__input name" placeholder="Name" />
-            </div>
-            <div class="login__row">
-              <img style="position: absolute;
-        margin: 0%;
-        padding-top: 2%" src="mail.png" alt="">
-              <input type="mail" name="mail" class="login__input name" placeholder="Mailid" />
-            </div>
-            <div class="login__row">
-              <img style="position: absolute;
-        margin: 0%;
-        padding-top: 2%" src="cl.png" alt="">
-              <input type="text" name="college" class="login__input name" placeholder="College-Name" />
-            </div>
-            <div class="login__row">
-              <img style="position: absolute;
-        margin: 0%;
-        padding-top: 2%" src="phones.png" alt="">
-              <input type="text" name="phone" class="login__input name" placeholder="Phn-Number" />
-            </div>
-            <div class="login__row">
-              <img style="position: absolute;
-        margin: 0%;
-        padding-top: 2%" src="refer.png" alt="">
-              <input type="text" name="rnum" class="login__input pass" placeholder="Ref. Number" />
-            </div>
-            <input class="paper" type="hidden" name="paper" value="No" />
-            <input class="quiz" type="hidden" name="quiz" value="No" />
-            <input class="photo" type="hidden" name="photo" value="No" />
+          <div class="group">
+            <label for="user" class="label">Name</label>
+            <input id="user" name="name" type="text" class="input">
           </div>
-      </div>
-      <div class="checker">
-        <input style="display:none;" id='one' name="paper" type='checkbox' />
-        <label for='one'>
-          <span></span>
-          Paper Presentaion
-        </label>
-        <input style="display:none;" id='two' name="quiz" type='checkbox' />
-        <label for='two'>
-          <span></span>
-          Quiz
-        </label>
-        <input style="display:none;" id='three' name="photo" type='checkbox' />
-        <label for='three'>
-          <span></span>
-          Photography
-        </label>
-        <input style="display:none;" id='four' name="photo" type='checkbox' />
-        <label for='four'>
-        </label>
-      </div>
-      <button type="submit" onclick="sendEmail()" class="login__submit">REGISTER</button>
-      </form>
-    </div>
+          <div class="group">
+            <label for="mail" class="label">Email</label>
+            <input name="mail" id="mail" type="text" class="input">
+          </div>
+          <div class="group">
+            <label for="pass" class="label">College Name</label>
+            <input id="cname" name="college" type="text" class="input">
+          </div>
+          <div class="group">
+            <label for="pass" class="label">Phone Number</label>
+            <input id="pass" type="text" name="phone" class="input">
+          </div>
+          <div class="group">
+            <label for="pass" class="label">Ref.Number</label>
+            <input id="pass" type="text" name="rnum" class="input">
+          </div>
+          <div class="group">
+            <div class="checker">
+              <input style="display:none;" id='one' name="paper" type='checkbox' />
+              <label for='one'>
+                <span></span>
+                Paper Presentaion
+              </label>
+              <input style="display:none;" id='two' name="quiz" type='checkbox' />
+              <label for='two'>
+                <span></span>
+                Quiz
+              </label>
+              <input style="display:none;" id='three' name="photo" type='checkbox' />
+              <label for='three'>
+                <span></span>
+                Photography
+              </label>
+            </div>
+          </div>
+          <div class="group">
+            <button type="submit" onclick="sendEmail()" class="button" name="button">REGISTER</button>
+          </div>
+          <div class="hr"></div>
+        </div>
+        </form>
+        </div>
   </div>
+</div>
+<div class="footer" style="width:100%; height:800px; margin-top:2%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+ background-position: center;
+ background-size: cover;
+ background-repeat: no-repeat;background-attachment: fixed;
+
+ position:relative;">
+<div class="o1" style="height:100px; width:300px; display:inline-block;padding:15px; position:absolute; top:10%;">
+
+</div>
+<div class="o1" style="height:200px; width:300px; display:inline-block;padding:15px; position:absolute; right:10%; top:10%;">
+
+</div>
+<div class="" style="position: relative;
+    top: 10%;
+    width: 100%;
+    height:245px;">
+<div class="" style="position:absolute; left:2%; width:300px;">
+  <h3 style="color:white; padding:2%; ">Organizing Committee Chairperson</h3>
+  <p style="left:15%;"><strong>Dr.M Gobalakrishnan </strong><br> Head of the Department</p>
+</div>
+<div class="" style="position:absolute; left:70%; width:320px;">
+  <h3 style="color:white; padding:4%; ">Organizing Secretary</h3>
+  <p style="left:10%;"><strong>Dr.V Thanabal</strong></p><br>
+    <p style="left:7%;">Associate Professor</p><br>
+  <p style="left:-9%;"><strong>Dr.M Janarthanan    </strong><strong>       Mr.V Thirumurugan</strong></p>
+    <p style="left:7%;">Assistant Professor</p>
+  </div>
+</div>
+
+<div class="" style="position: relative;
+    top: 15%;
+    width: 100%;
+    height:245px;">
+  <h3 style="color:white; position:relative; left:35%; display:inline-block; margin:3%;">Students Co-Ordinators</h3><br>
+<div class="" style="position:absolute; left:2%; width:150px;">
+  <h3 style="color:white; padding:7%; ">KEERTHISIVA V</h3>
+  <p style="left:10%;">8973580814</p>
+</div>
+<div class="" style="position:absolute; left:37%; width:190px;">
+  <h3 style="color:white; padding:7%; ">HARIHARA SUDHAN G</h3>
+  <p style="left:20%;">7845124240</p>
+</div>
+<div class="" style="position:absolute; left:80%; width:110px;">
+  <h3 style="color:white; padding:7%; ">AJAY A</h3>
+  <p style="left:-8%;">9047018760</p>
+</div>
+  </div>
+<div class=""  style="position:relative; top:25%; height:109px;">
+  <div class="" style="position:absolute; left:45%; width:147px;">
+    <h1 style="color:white; display:inline-block; padding:2%;">MADE WITH LOVE</h1><br>
+    <p style="color:white; left:45px; padding:2%;">By</p><br>
+    <h3 style="color:white;padding:2%;  display:inline-block;">P.SUJANPRAKASH</h3><a href="mailto:sujanprakashp1234@gmail.com"><img style="position: absolute;
+    /* margin: -2%; */
+    padding: 7px;
+    padding-top: 0px;
+    top: 36%;
+    width: 46px;" src="mi.png" alt="mi"></a>
+    <p style="left:15%;">8220220508</p>
+  </div>
+</div>
+
+
+
+</div>
   </div>
 
 
   <script type="text/javascript">
     function sendEmail() {
-      Email.send({
-          Host: "smtp.gmail.com",
-          Username: "texarita2020bit@gmail.com",
-          Password: "textiletechnology",
-          To: 'sujanprakashp1234@gmail.com',
-          From: "texarita2020bit@gmail.com",
-          Subject: "Sending Email using javascript",
-          Body: "Well that was easy!!",
-        })
-        .then(function(message) {
-          alert("mail sent successfully")
-        });
-    }
+      setTimeout(function () {
+          console.log(mail);
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "texarita2020bit@gmail.com",
+            Password: "textiletechnology",
+            To: mail,
+            From: "texarita2020bit@gmail.com",
+            Subject: "Sending Email using javascript",
+            Body: "Well that was easy!!",
+          })
+          .then(function(message) {
+            alert("mail sent successfully")
+          },3000);
+      });
 
+    }
 
 
 
@@ -1065,6 +1135,9 @@
       $(".pinfo").fadeOut(1);
       $(".qinfo").fadeOut(1);
       $(".oinfo").fadeOut(1);
+      $(".login-wrap").fadeOut(1);
+        $(".footer").fadeOut(1);
+        $(".area").fadeOut(1);
       $("body").css("background-color","black");
       setTimeout(function() {
         $(".loading").fadeOut("slow", function() {
@@ -1072,11 +1145,13 @@
             $("body").css("background-color","white");
             $(".sp-container").fadeIn(function() {
               setTimeout(function() {
+                $(".area").fadeIn();
                 $(".sp-container").fadeIn();
                 $(".sp-container").hide(function() {
                   $(".container").fadeIn("slow", function() {
                     $(".main").fadeIn(1);
-                    $(".register").fadeIn(1);
+                    $(".login-wrap").fadeIn(1);
+                      $(".footer").fadeIn(1);
                   });
                 });
               }, 6500);
@@ -1157,7 +1232,11 @@
           top: '25%'
         }, 100, 'linear');
       });
-
+      $(".button").click(function () {
+        $(".button").html("<i class='fa fa-spinner fa-spin'></i>");
+        $(".login-form").fadeOut();
+        $(".login-html").addClass("end");
+      });
 
       $(".poto").click(function() {
         $(".eve").fadeOut("fast");
@@ -1178,70 +1257,26 @@
 
       });
 
-      $login = $(".login");
-      $(document).on("click", ".login__submit", function(e) {
-        var that = this;
-        $(that).addClass("processing");
-        setTimeout(function() {
-          $(that).addClass("success");
-        }, 1500);
-      });
+      $(".tab").click(function () {
+        $(".down").fadeOut("slow");
+      })
 
       $('form').submit(function(e) {
         var form = this;
         var amount = 0;
-
-        var name = $(".name").val();
-
-        console.log(p);
-        var len = $("input[type=checkbox]:checked").length;
-        var l = $("input[type=checkbox]:checked");
-        if ($("input[name=paper]").is(
-            ":checked")) {
-          $('.paper').val("Yes");
-          var p = $(".paper").val();
-          console.log(p);
-        }
-        if ($("input[name=quiz]").is(
-            ":checked")) {
-          $('.quiz').val("Yes");
-          var q = $(".quiz").val();
-          console.log(q);
-        }
-        if ($("input[name=photo]").is(
-            ":checked")) {
-          $('.photo').val("Yes");
-          var s = $(".photo").val();
-          console.log(s);
-        }
-
-        if (len == 0) {
-          alert("Please select any event to register..!");
-        } else {
-          if (len == 1) {
-            amount = 50;
-          }
-          if (len == 2) {
-            amount = 100;
-          }
-          if (len == 3) {
-            amount = 150;
-          }
-          alert("Hi " + name + " Please check that your credentials are right.!")
-        }
-        e.preventDefault();
-        $("h1").append(amount);
-        setTimeout(function() {
-          form.submit();
-        }, 2000);
-      });
-    });
-
+        var name = $("#user").val();
+        mail = $("#mail").val();
+        a=0;
+console.log(name);
+console.log(mail);
+ var len= $("input[type=checkbox]:checked").length;
+if(len>0){
+  a=1;
+    alert("Hi " + name + " Please check that your credentials are right.!");
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyAnAF3v3LPzeSnc0QKVpmtn7Fzl5zp1_HXJznqPZRXNUCg8_4/exec'
     const form = document.forms['google-sheet']
 
     form.addEventListener('submit', e => {
-      setTimeout(function() {
         e.preventDefault()
         fetch(scriptURL, {
             method: 'POST',
@@ -1250,8 +1285,20 @@
           .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
           .catch(error => console.error('Error!', error.message))
 
-      }, 2000);
+
     })
+}
+else{
+  alert("Please tick any event for participating in TEXARITA..!");
+}
+
+        e.preventDefault();
+        setTimeout(function() {
+          form.submit();
+        },10000);
+      });
+    });
+
   </script>
 </body>
 
