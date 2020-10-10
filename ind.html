@@ -7,10 +7,18 @@
   <title></title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <script src="https://smtpjs.com/v3/smtp.js">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=David+Libre:wght@700&family=Libre+Baskerville&family=Secular+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&family=Peddana&family=Sansita+Swashed&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&family=Peddana&family=Sacramento&family=Sansita+Swashed&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Volkhov&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bitter:ital@1&family=Volkhov&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bitter:ital@1&family=Fredoka+One&family=Volkhov&display=swap" rel="stylesheet">
+<script src="https://smtpjs.com/v3/smtp.js">
   </script>
   <style media="screen">
+  body{
+    overflow-y: scroll;
+  }
     input[type='checkbox'] {
         height: 0;
         width: 0;
@@ -131,8 +139,8 @@
   }
 
   @keyframes mymove {
-    from {background-color: red;}
-    to {background-color: blue;}
+    from {background-color: #133b5c;}
+    to {background-color: #7d0633;}
   }
   .login-wrap{
   width:100%;
@@ -471,8 +479,8 @@
     }
 
     .container:hover .text {
-      top: 20%;
-      left: 35%;
+      top: 10%;
+      left: 40%;
     }
 
     .main {
@@ -829,6 +837,18 @@
           opacity: 0;
         }
       }
+      .line{
+        opacity: 0;
+        z-index: 500;
+        position: absolute;
+        transition: all 1s linear;
+      }
+      .container:hover .line{
+        display:inline-block;
+        top:40%;
+        left: 10%;
+        opacity: 1;
+      }
 
   </style>
 </head>
@@ -840,17 +860,21 @@
     <img style="width:100px; position:absolute;" src="logo.png" alt="logo-loader">
   </section>
   <div class="sp-container">
-    <h2 class="frame-1"><span class="hs" style="color:#00bcd4">B</span>IT</h2>
-    <h2 class="frame-2"><span class="hs1" style="color:red">T</span>EXARITA</h2>
+    <h2 class="frame-1" style="  font-family: 'Secular One', sans-serif;"><span class="hs" style="color:#00bcd4;   font-family: 'Secular One', sans-serif;">B</span>IT</h2>
+    <h2 class="frame-2" style="  font-family: 'Secular One', sans-serif;"><span class="hs1" style="color:red;   font-family: 'Secular One', sans-serif;">T</span>EXARITA</h2>
   </div>
     <div class="container">
       <div class="text">
-        <img class="event-pic" style="width:300px; cursor:pointer;" src="event.png" alt="event-name">
+        <img class="event-pic" style="width:400px; cursor:pointer;" src="event.png" alt="event-name">
+      </div>
+      <div class="line">
+        <h1 style="color:white; font-size:60px; margin-bottom: 4%; font-family: 'Abril Fatface', cursive;  transition:all 1s ease;">Do <span style="color:#00bcd4; font-family: 'Abril Fatface', cursive;">something </span> for the <br><span style="color:#cf1b1b; font-family: 'Abril Fatface', cursive;">foundation </span> of your <span style="color:#6f4a8e; font-family: 'Abril Fatface', cursive;">Life.!😜</span></h1>
+        <h1 style="color:white; margin: 182px;font-size:40px; font-family: 'Sansita Swashed', cursive; color:#28df99;">Mark YouR CalendeR ---> <strong><span style="font-family: 'Sansita Swashed', cursive; color:#d7385e">07.11.2020</span></strong></h></h1>
       </div>
       <section id="section07" class="demo">
     <a><span></span><span></span><span></span>Touch Me</a>
   </section>
-              <div class="clip clip1">
+      <div class="clip clip1">
       </div>
       <div class="clip clip2">
       </div>
@@ -866,10 +890,10 @@
         <div class="pi" style="position:absolute; width:100%;height:100%;">
           <h1 class="title"><span style="color:#00bcd4;">P</span>aper <span style="color:#00bcd4;">P</span>resentation</h1>
           <h3 style="color:#00bcd4; margin:2%;margin-left:30%; ">Rules and Regulations</h3>
-          <p style="display:inline-block;">👉🏻Abstract shouldn't exceed more than 250 words.<br>
+          <p style="display:inline-block; font-family: 'Peddana', serif;">👉🏻Abstract shouldn't exceed more than 250 words.<br>
             👉🏻Presentation shouldn't exceed more than 6 mins.<br></p>
           <h3 style="color:#00bcd4;margin:2%;margin-left:15%;">Topics of interest include, but are not limited to the following</h3>
-          <p style="display:inline-block;">
+          <p style="display:inline-block; font-family: 'Peddana', serif;">
             ✍🏻 Agricultural application of textiles  <br>
             ✍🏼 KHADI - The pride of India <br>
             ✍🏼 Seamless garments -  A fashion trend <br>
@@ -885,11 +909,11 @@
           <h3 class="sub" style="display:content;">Last date for abstract submission : <span style="color:red;">1-11-2020</span></h3>
           <h3 style="color:white; margin-left:15%; margin:3%; padding:25px;">For Submission : Submit your Abstract and Presentation here : <a style="color:green;" href="maito:texaritapaper@gmail.com">texaritapaper@gmail.com</a></h3>
             <div class="" style="position:absolute; width:200px; top:75%; left:10%; ">
-              <h3 style="color:white; padding:7%; ">MOHANA PRASATH T</h3>
+              <h3 style="color:white; padding:7%;font-family: 'Bitter', serif; ">MOHANA PRASATH T</h3>
               <p style="left:10%;">8056463969</p>
             </div>
             <div class="" style="position:absolute; width:180px; top:75%; left:70%; ">
-              <h3 style="color:white; padding:7%; ">SWETHA REDDY L</h3>
+              <h3 style="color:white; padding:7%; font-family: 'Bitter', serif; ">SWETHA REDDY L</h3>
               <p style="left:10%;">9629116689</p>
             </div>
         </div>
@@ -904,7 +928,7 @@
         <div class="pi" style="position:absolute; width:100%;height:100%;">
           <h1 class="title"><span style="color:#00bcd4;">Q</span>uiz</h1>
           <h3 style="color:#00bcd4; margin:2%;margin-left:30%; ">Rules and Regulations</h3>
-          <p>👉🏻A team shall consist of minimum of one to maximum of two students.<br>
+          <p style="font-family: 'Peddana', serif;">👉🏻A team shall consist of minimum of one to maximum of two students.<br>
             👉🏻The decision of the quiz-master will be final and will not be subjected to any change.<br>
             ✍🏻 Try to avoid mic problem and network issue.<br>
             ✍🏼 There will be three stage rounds conducted. <br>
@@ -912,11 +936,11 @@
 
           </p>
           <div class="" style="position:absolute; width:140px; top:70%; left:10%; ">
-            <h3 style="color:white; padding:7%; ">PAVITHRA K L</h3>
+            <h3 style="color:white; padding:7%; font-family: 'Bitter', serif; ">PAVITHRA K L</h3>
             <p style="left:10%;">7867897978</p>
           </div>
           <div class="" style="position:absolute; width:180px; top:70%; left:70%; ">
-            <h3 style="color:white; padding:7%; ">GOKULASREE A R</h3>
+            <h3 style="color:white; padding:7%; font-family: 'Bitter', serif; ">GOKULASREE A R</h3>
             <p style="left:10%;">9751281944</p>
           </div>
 
@@ -929,13 +953,13 @@
         <div class="pi" style="position:absolute; width:100%;height:100%;">
           <h1 class="title"><span style="color:#00bcd4;">P</span>hotography</h1>
           <h3 style="color:#00bcd4; margin:2%; margin-left:30%;">Rules and Regulations</h3>
-          <p>👉🏻Edited photos will not be accepted. (Don’t use photoshop, light room etc..)<br>
+          <p font-family: 'Peddana', serif;>👉🏻Edited photos will not be accepted. (Don’t use photoshop, light room etc..)<br>
             👉🏻Black and white photo will not be allowed.<br>
             👉🏻Send the original image in JPEG format with the word document through mail.<br>
             👉🏻Auto like apps should not be used.<br>
             👉🏻Your photo will be uploaded in Instagram and the photo with maximum likes will be shortlisted. </p>
           <h3 style="color:#00bcd4;margin:2%;margin-left:30%;">Topics</h3>
-          <p>
+          <p style="font-family: 'Peddana', serif;">
             ✍🏻 Colorful photography( photo must have more colors) <br>
             ✍🏼 Monochrome photography<br>
             ✍🏼 Vintage photograph <br>
@@ -943,21 +967,21 @@
           <h3 style="color:white; margin-left:15%; margin:3%; padding:25px;">For Submission : Submit your Abstract and Presentation here : <a style="color:green;" href="maito:photographytxt2020@gmail.com">photographytxt2020@gmail.com</a></h3>
 
           <div class="" style="position:absolute; width:140px; top:70%; left:10%; ">
-            <h3 style="color:white; padding:7%; ">RAJBIR SINGH</h3>
+            <h3 style="color:white; padding:7%; font-family: 'Bitter', serif; ">RAJBIR SINGH</h3>
             <p style="left:10%;">7837547937</p>
           </div>
           <div class="" style="position:absolute; width:140px; top:70%; left:70%; ">
-            <h3 style="color:white; padding:7%; ">ELANGO C</h3>
+            <h3 style="color:white; padding:7%; font-family: 'Bitter', serif; ">ELANGO C</h3>
             <p style="left:10%;">9659838418</p>
           </div>
         </div>
       </div>
 
       <div class="content">
-        <h1 class="eve" style="color:white; top:5%; position:absolute; left:45%; font-size:50px;">EVENTS</h1>
+        <h1 class="eve"  style="color:white; top:5%;font-family: 'David Libre', serif; position:absolute; left:45%; font-size:50px;">EVENTS</h1>
         <div class="paper">
           <div class="ptext">
-            <h3 class"pname" style="color:white; font-size:40px; margin-left:5px; padding:20px;border:15px  dashed;">Paper <br> Presentaion</h3>
+            <h3 class"pname" style="color:white; font-family: 'Volkhov', serif; font-size: 39px;margin-left:5px; padding:20px;border:15px  dashed;"><span style="font-family: 'Lobster Two', cursive; color:#00bcd4">P</span>aper <br> Presentaion</h3>
           </div>
           <div class="ppic">
             <img style="width:100px; height:100px;" src="pp.png" alt="paperlogo">
@@ -965,7 +989,7 @@
         </div>
         <div class="quiz">
           <div class="qtext">
-            <h3 class"qname" style="color:white; font-size:40px; margin-left:5px; padding: 20px 90px;border:15px  dashed;"><span style="color:#00bcd4">Q</span>uiz</h3>
+            <h3 class"qname" style="color:white; font-family: 'Volkhov', serif; font-size: 61px;margin-left:5px; padding: 20px 59px;border:15px  dashed;"><span style="color:#00bcd4;font-family: 'Lobster Two', cursive;">Q</span>uiz</h3>
           </div>
           <div class="qpic">
             <img style="width:100px; height:100px;" src="quiz.png" alt="quiz-logo">
@@ -974,7 +998,7 @@
 
         <div class="poto">
           <div class="otext">
-            <h3 class"oname" style="color:white; font-size:40px; margin-left:5px; padding:20px;border:15px  dashed;"><span style="color:#00bcd4">P</span>hotography</h3>
+            <h3 class"oname" style="color:white; font-family: 'Volkhov', serif; font-size:40px; margin-left:5px; padding:20px;border:15px  dashed;"><span style="color:#00bcd4">P</span>hotography</h3>
           </div>
           <div class="opic">
             <img style="width:100px; height:100px;" src="poto.png" alt="poto-logo">
@@ -987,7 +1011,7 @@
     <a><span class="down"></span><span class="down"></span><span class="down"></span></a>
   </section>
   <div class="login-html">
-    <input id="tab-2"  type="radio" name="tab" class="sign-up"><label style="color:darkgrey;" for="tab-2" class="tab">REGISTER</label>
+    <input id="tab-2"  type="radio" name="tab" class="sign-up"><label style="color:darkgrey; font-family: 'Libre Baskerville', serif;" for="tab-2" class="tab">REGISTER</label>
     <div class="login-form">
       <div class="sign-up-htm">
         <form method="post" autocomplete="off" name="google-sheet">
@@ -1013,7 +1037,7 @@
           </div>
           <div class="group">
             <label for="pass" class="label">Gpay.Number</label>
-            <input id="pass" type="text" name="rnum" class="input" value="8973580814">
+            <input id="pass" type="text" name="rnum" class="input" value="8973580814" readonly>
           </div>
           <div class="group">
             <div class="checker">
@@ -1035,18 +1059,21 @@
             </div>
           </div>
           <div class="group">
-            <button type="submit" onclick="sendEmail()" class="button" name="button">REGISTER</button>
+            <button id="sub" type="submit" onclick="sendEmail()" class="button" name="button">REGISTER</button>
           </div>
           <div class="hr"></div>
         </div>
         </form>
         </div>
   </div>
+  <h1 class="suc" style="color:white; margin:1%; font-family: 'Fredoka One', cursive;  position:absolute; display: none;
+  top:40%; font-size:45px">Thank You for Registering ❤️ </h1>
 </div>
-<div class="footer" style="width:100%; height:800px; margin-top:2%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+<div class="footer" style="width:100%; height:930px; margin-top:2%; background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
  background-position: center;
  background-size: cover;
- background-repeat: no-repeat;background-attachment: fixed;
+ background-repeat: no-repeat;
+ background-attachment: fixed;
 
  position:relative;">
 <div class="o1" style="height:100px; width:300px; display:inline-block;padding:15px; position:absolute; top:10%;">
@@ -1061,13 +1088,13 @@
     height:245px;">
 <div class="" style="position:absolute; left:2%; width:300px;">
   <h3 style="color:white; padding:2%; ">Organizing Committee Chairperson</h3>
-  <p style="left:15%;"><strong>Dr.M Gobalakrishnan </strong><br> Head of the Department</p>
+  <p style="left:15%; font-family: 'Bitter', serif;"><strong>Dr.M Gobalakrishnan </strong><br> Head of the Department</p>
 </div>
 <div class="" style="position:absolute; left:70%; width:320px;">
   <h3 style="color:white; padding:4%; ">Organizing Secretary</h3>
-  <p style="left:10%;"><strong>Dr.V Thanabal</strong></p><br>
+  <p style="left:10%; font-family: 'Bitter', serif;"><strong>Dr.V Thanabal</strong></p><br>
     <p style="left:7%;">Associate Professor</p><br>
-  <p style="left:-9%;"><strong>Dr.M Janarthanan</strong>,<strong>Mr.V Thirumurugan</strong></p>
+  <p style="left:-9%; font-family: 'Bitter', serif;"><strong>Dr.M Janarthanan</strong>,<strong>Mr.V Thirumurugan</strong></p>
     <p style="left:7%;">Assistant Professor</p>
   </div>
 </div>
@@ -1078,30 +1105,30 @@
     height:245px;">
   <h3 style="color:white; position:relative; left:35%; display:inline-block; margin:3%;">Students Co-Ordinators</h3><br>
 <div class="" style="position:absolute; left:2%; width:150px;">
-  <h3 style="color:white; margin: 0; font-size: 15px;padding:7%; ">KEERTHISIVA V</h3>
+  <h3 style="color:white; margin: 0; font-size: 15px;padding:7%; font-family: 'Bitter', serif; ">KEERTHISIVA V</h3>
   <p style="left:10%;">8973580814</p>
 </div>
 <div class="" style="position:absolute; left:37%; width:200px;">
-  <h3 style="color:white; margin: 0; font-size: 15px;  padding:7%; ">HARIHARA SUDHAN G</h3>
+  <h3 style="color:white; margin: 0; font-size: 15px;  padding:7%; font-family: 'Bitter', serif;">HARIHARA SUDHAN G</h3>
   <p style="left:20%;">7845124240</p>
 </div>
 <div class="" style="position:absolute; left:80%; width:110px;">
-  <h3 style="color:white; padding:7%; margin: 0; font-size: 15px; ">AJAY A</h3>
+  <h3  style="color:white; padding:7%;font-family: 'Bitter', serif; margin: 0; font-size: 15px; ">AJAY A</h3>
   <p style="left:1%;">9047018760</p>
 </div>
   </div>
-<div class=""  style="position:relative; top:25%; height:109px;">
-  <div class="" style="position:absolute; left:45%; width:176px;">
-    <h1 style="color:white; display:inline-block; margin: 0; font-size: 15px;padding:2%;">MADE WITH LOVE</h1><br>
-    <p style="color:white; left:59px; padding:2%;">By</p><br>
-    <h3 style="color:white;padding:2%; margin: 0; display:inline-block;">P.SUJANPRAKASH</h3><a href="mailto:sujanprakashp1234@gmail.com"><img style="position: absolute;
+<div class=""  style="position:relative; top:25%; height:218px;">
+  <div class="" style="position:absolute; left:40%; width:280px;">
+    <h1 style="color:white; display:inline-block; margin: 0; font-family: 'Abril Fatface', cursive; font-size: 30px;padding:2%;">MADE WITH LOVE</h1><br>
+    <p style="color:white; left:107px; padding:2%;">By</p><br>
+    <h3 style="position: relative; left:17%; color:white;padding:2%; margin: 0; font-size: 64px;  word-spacing:0.4cm;font-family: 'Sacramento', cursive; display:inline-block;">Sujan</h3><a href="mailto:sujanprakashp1234@gmail.com"><img style="position: absolute;
     /* margin: -2%; */
     padding: 7px;
     padding-top: 0px;
-    top: 36%;
-    left: 100%;
+    top: 65%;
+    left: 76%;
     width: 46px;" src="mi.png" alt="mi"></a>
-    <p style="left:15%;">8220220508</p>
+    <p style=" position: absolute; top:97%; left:30%; border-bottom:2px solid white;">8220220508</p>
   </div>
 </div>
   </div>
@@ -1234,10 +1261,10 @@
           top: '25%'
         }, 100, 'linear');
       });
-      $(".button").click(function () {
-        $(".button").html("<i class='fa fa-spinner fa-spin'></i>");
+      $("#sub").click(function () {
         $(".login-form").fadeOut();
         $(".login-html").addClass("end");
+        $(".suc").css("display","inline-block");
       });
 
       $(".poto").click(function() {
